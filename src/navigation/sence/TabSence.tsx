@@ -1,7 +1,6 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Images from 'assets';
 import HomeScreen from 'features/home/HomeScreen';
-
 import navigationConfigs from 'navigation/config/options';
 import React from 'react';
 import {TAB_NAVIGATION_ROOT} from '../../navigation/config/routes';

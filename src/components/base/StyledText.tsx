@@ -3,7 +3,8 @@ import * as React from 'react';
 import {memo} from 'react';
 import isEqual from 'react-fast-compare';
 import {Normalize, useTranslation} from 'react-i18next';
-import {StyleProp, StyleSheet, Text, TextProps, TextStyle} from 'react-native';
+import {StyleProp, Text, TextProps, TextStyle} from 'react-native';
+import {ScaledSheet} from 'react-native-size-matters';
 import {Resource} from 'utilities/i18next';
 
 export type I18Type = Normalize<Resource>;
@@ -46,9 +47,9 @@ const StyledText = (props: StyledTextCombineProps) => {
   );
 };
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   text: {
-    fontSize: 14,
+    fontSize: '14@ms',
     color: '#000000',
     alignItems: 'center',
     justifyContent: 'center',

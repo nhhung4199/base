@@ -10,7 +10,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import {ScaledSheet} from 'react-native-size-matters';
-import StyledText from '../base/StyledText';
+import StyledText, {I18Type} from '../base/StyledText';
 interface StyledTextInputFormProps {
   control: Control;
   name: string;
@@ -31,9 +31,6 @@ interface StyledTextInputFormProps {
   placeholderTextColor?: string;
 }
 
-/**
- * A component which has a label and an input together.
- */
 const StyledTextInputForm = (props: StyledTextInputFormProps) => {
   const {
     name,
@@ -88,7 +85,7 @@ const StyledTextInputForm = (props: StyledTextInputFormProps) => {
       </Pressable>
       {fieldState?.error && (
         <StyledText
-          i18nText={fieldState?.error.message}
+          i18nText={fieldState?.error.message as I18Type}
           customStyle={styles.txtError}
         />
       )}

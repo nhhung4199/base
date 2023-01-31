@@ -3,21 +3,6 @@ import {Platform} from 'react-native';
 import transition from './transition';
 const isIos = Platform.OS === 'ios';
 
-export const stackNavigationConfigs: any = {
-  cardStyle: {
-    backgroundColor: '#fff',
-  },
-  headerShown: false,
-  gestureEnabled: isIos,
-  keyboardHandlingEnabled: isIos,
-  cardShadowEnabled: true,
-  cardOverlayEnabled: true,
-  transitionSpec: {
-    open: transition,
-    close: transition,
-  },
-};
-
 const navigationConfigs: any = {
   cardStyle: {
     backgroundColor: '#fff',
