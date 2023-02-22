@@ -1,16 +1,15 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from 'features/auth/LoginScreen';
-import navigationConfigs from 'navigation/config/options';
-import {APP_ROUTE, AUTHENTICATE_ROUTE} from 'navigation/config/routes';
+import {stackNavigationConfigs} from 'navigation/config/options';
+import {AUTHENTICATE_ROUTE} from 'navigation/config/routes';
 import React from 'react';
+import {StyleSheet} from 'react-native';
 
 const Stack = createStackNavigator();
 
 const AuthStack = () => {
   return (
-    <Stack.Navigator
-      screenOptions={navigationConfigs}
-      initialRouteName={APP_ROUTE.MAIN_TAB}>
+    <Stack.Navigator screenOptions={stackNavigationConfigs}>
       <Stack.Screen
         name={AUTHENTICATE_ROUTE.LOGIN_SCREEN}
         component={LoginScreen}
@@ -20,3 +19,5 @@ const AuthStack = () => {
 };
 
 export default AuthStack;
+
+const styles = StyleSheet.create({});

@@ -1,37 +1,49 @@
+import IconHide from 'assets/svgs/ic_hide.svg';
+import IconShow from 'assets/svgs/ic_show.svg';
+
 import React, {useState} from 'react';
-import {Control, RegisterOptions, useController} from 'react-hook-form';
+import {useController} from 'react-hook-form';
 import {
   KeyboardType,
   Pressable,
   StyleProp,
   TextInput,
   TextStyle,
+  TouchableOpacity,
   View,
   ViewStyle,
 } from 'react-native';
 import {ScaledSheet} from 'react-native-size-matters';
-import StyledText, {I18Type} from '../base/StyledText';
+import {Themes} from '../../assets/themes';
+import StyledText from '../base/StyledText';
 interface StyledTextInputFormProps {
-  control: Control;
+  control: any;
   name: string;
-  rules?: RegisterOptions;
+  rules?: any;
   onPress?(): void;
-  onPressRight?(): void;
+  iconRight?: any;
   customStyle?: StyleProp<ViewStyle>;
   customStyleInput?: StyleProp<TextStyle>;
   placeholderTx?: any;
-  multiline?: boolean;
+  multiline?: number;
   isPassword?: boolean;
   editable?: boolean;
   maxLength?: number;
   keyboardType?: KeyboardType;
   iconLeft?: any;
-  iconRight?: any;
-  textAlign?: 'center' | 'left' | 'right' | undefined;
-  placeholderTextColor?: string;
+  textAlign?: string;
+  placeholderTextColor?: any;
 }
+export const StyledTextInputForm = React.memo(
+  (props: StyledTextInputFormProps) => {
+    return <ControlledTextField {...props} />;
+  },
+);
 
-const StyledTextInputForm = (props: StyledTextInputFormProps) => {
+/**
+ * A component which has a label and an input together.
+ */
+const ControlledTextField = props => {
   const {
     name,
     placeholderTx,
@@ -48,23 +60,33 @@ const StyledTextInputForm = (props: StyledTextInputFormProps) => {
     keyboardType,
     iconLeft,
     textAlign,
-    placeholderTextColor,
+    placeholderTextColor = Themes.Light.COLORS.gray,
   } = props;
 
   const [showSecure, setShowSecure] = useState(isPassword);
 
-  const {field, fieldState} = useController({
+  const {field, fieldState}: any = useController({
     name,
     rules,
     control,
   });
 
+  const toggleSecure = () => {
+    setShowSecure(showSecure => !showSecure);
+  };
   return (
     <View style={styles.container}>
       <Pressable
-        disabled={!editable}
         onPress={onPress}
-        style={[styles.body, customStyle]}>
+        style={[
+          styles.body,
+          {
+            borderColor: fieldState?.error
+              ? Themes.Light.COLORS.red
+              : Themes.Light.COLORS.black,
+          },
+          customStyle,
+        ]}>
         {iconLeft}
         <TextInput
           pointerEvents={editable ? undefined : 'none'}
@@ -81,18 +103,23 @@ const StyledTextInputForm = (props: StyledTextInputFormProps) => {
           keyboardType={keyboardType}
           textAlign={textAlign}
         />
+        {isPassword && (
+          <TouchableOpacity onPress={toggleSecure}>
+            {showSecure ? <IconHide /> : <IconShow />}
+          </TouchableOpacity>
+        )}
+
         {iconRight}
       </Pressable>
       {fieldState?.error && (
         <StyledText
-          i18nText={fieldState?.error.message as I18Type}
+          i18nText={fieldState?.error.message}
           customStyle={styles.txtError}
         />
       )}
     </View>
   );
 };
-export default React.memo(StyledTextInputForm);
 const styles = ScaledSheet.create({
   body: {
     flexDirection: 'row',
@@ -104,9 +131,10 @@ const styles = ScaledSheet.create({
   input: {
     paddingVertical: '15@ms',
     flex: 1,
+    paddingHorizontal: '10@s',
   },
   txtError: {
-    color: 'red',
+    color: Themes.Light.COLORS.red,
     paddingTop: '5@ms',
   },
   eye: {

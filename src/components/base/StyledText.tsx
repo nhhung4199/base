@@ -1,3 +1,4 @@
+import {Themes} from 'assets/themes';
 import i18next from 'i18next';
 import * as React from 'react';
 import {memo} from 'react';
@@ -50,9 +51,10 @@ const StyledText = (props: StyledTextCombineProps) => {
 const styles = ScaledSheet.create({
   text: {
     fontSize: '14@ms',
-    color: '#000000',
+    color: Themes.Light.COLORS.black,
     alignItems: 'center',
     justifyContent: 'center',
+    // fontFamily: Themes.Fonts.regular,
   },
 });
 

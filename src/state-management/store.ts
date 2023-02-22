@@ -1,11 +1,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createStore} from 'redux';
 import {persistReducer, persistStore} from 'redux-persist';
-import reducer from './index';
+import reducer from '.';
 
 const persistConfig = {
-  whitelist: [],
-  key: 'root',
+  whitelist: ['userReducer', 'resourceReducer'],
+  key: 'eGate',
+  debug: __DEV__,
   storage: AsyncStorage,
 };
 const reducer2 = persistReducer(persistConfig, reducer);

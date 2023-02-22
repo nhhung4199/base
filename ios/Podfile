@@ -42,12 +42,7 @@ target 'Test' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
-  pod 'react-native-fbsdk-next', :path => '../node_modules/react-native-fbsdk-next'
-  pod 'FirebaseCore', :modular_headers => true
-  pod 'FirebaseCoreInternal', :modular_headers => true
-  pod 'GoogleUtilities', :modular_headers => true
-  pod 'RNFBApp', :path => '../node_modules/@react-native-firebase/app', :modular_headers => true
-
+ 
   target 'TestTests' do
     inherit! :complete
     # Pods for testing

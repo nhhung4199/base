@@ -1,11 +1,11 @@
 import 'react-i18next';
-import { Resource } from './i18next';
+import {Resource} from './i18next';
 
-type Language = 'en' | 'jp';
+type Language = 'en' | 'vi';
 
 declare module 'react-i18next' {
-    interface CustomTypeOptions {
-        defaultNS: 'translation';
-        resources: Record<Language, Resource>;
-    }
+  interface CustomTypeOptions {
+    defaultNS: 'translation';
+    resources: Record<Language, Resource>;
+  }
 }

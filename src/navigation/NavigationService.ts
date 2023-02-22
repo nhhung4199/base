@@ -60,5 +60,5 @@ export function toggleDrawer() {
   navigationRef.current.dispatch(DrawerActions.toggleDrawer());
 }
 export function popTo(number: number) {
-  navigationRef.current.dispatch(StackActions.pop(number));
+  navigationRef.current.dispatch(StackActions.pop(2));
 }

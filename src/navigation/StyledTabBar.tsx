@@ -1,5 +1,8 @@
+import {Themes} from 'assets/themes';
+import StyledText from 'components/base/StyledText';
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
+import {ScaledSheet} from 'react-native-size-matters';
 import Metrics from 'utilities/metric';
 interface Props {
   state: any;
@@ -43,11 +46,19 @@ const StyledTabBar = (props: Props) => {
             onLongPress={onLongPress}
             key={route.key}
             style={[styles.tabButton]}>
-            <Image
-              source={isFocused ? options?.icon_active : options?.icon}
-              style={styles.tabIcon}
+            {isFocused ? options?.icon_active : options?.icon}
+            <StyledText
+              i18nText={options?.title}
+              customStyle={[
+                styles.label,
+                {
+                  color: isFocused
+                    ? Themes.Light.COLORS.black
+                    : Themes.Light.COLORS.gray,
+                },
+              ]}
+              numberOfLines={1}
             />
-            <Text style={styles.label}>{options?.title}</Text>
           </TouchableOpacity>
         );
       })}
@@ -55,11 +66,11 @@ const StyledTabBar = (props: Props) => {
   );
 };
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   tabContainer: {
     flexDirection: 'row',
     paddingBottom: Metrics.safeBottomPadding,
-    shadowColor: '#000000',
+    shadowColor: Themes.Light.COLORS.black,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -67,25 +78,25 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    backgroundColor: '#ffffff',
+    backgroundColor: Themes.Light.COLORS.white,
     alignItems: 'center',
   },
   tabButton: {
     marginHorizontal: 5,
-    paddingTop: 5,
+    paddingTop: '5@vs',
     alignItems: 'center',
     flex: 1,
-    borderTopWidth: 2,
-    borderTopColor: '#ffffff',
+    borderTopWidth: '2@vs',
+    borderTopColor: Themes.Light.COLORS.white,
   },
   tabIcon: {
-    width: 20,
-    height: 20,
+    width: '20@ms',
+    height: '20@ms',
     resizeMode: 'contain',
   },
   label: {
-    fontSize: 10,
-    marginTop: 5,
+    fontSize: '10@ms',
+    marginTop: '5@vs',
   },
 });
 

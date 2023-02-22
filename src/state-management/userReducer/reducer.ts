@@ -2,7 +2,7 @@ import ActionType from './type';
 
 const initState = {};
 
-const userReducer = (state = initState, action: any) => {
+const userReducer = (state = initState, action) => {
   switch (action.type) {
     case ActionType.SET_USER:
       return {
