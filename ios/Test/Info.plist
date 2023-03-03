@@ -23,20 +23,12 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb866335091113654</string>
-			</array>
+			
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>FacebookAppID</key>
-	<string>866335091113654</string>
-	<key>FacebookClientToken</key>
-	<string>2716068e32f9ce5cc1d565a6ce89e7ac</string>
-	<key>FacebookDisplayName</key>
-	<string>Test</string>
+	
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -50,6 +42,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Please allow use of camera</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Please allow use of microphone</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>
